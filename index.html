@@ -1,0 +1,397 @@
+<meta name="author" content="Seoyoon Jang">
+<meta name="color-scheme" content="light">
+<style>
+  :root {
+    --bg: #fcfcfc;
+    --ink: #111111;
+    --muted: #555555;
+    --rule: #d6d6d6;
+    --accent: #a8461b; /* burnt orange, used sparingly */
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 72px 24px 96px;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  a:hover, a:focus-visible { border-bottom-color: var(--accent); }
+  a:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- Header ---------- */
+  header { margin-bottom: 40px; }
+
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+
+  .title {
+    margin: 6px 0 0;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .contact {
+    margin: 16px 0 0;
+    padding: 12px 0 0;
+    border-top: 1px solid var(--ink);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    font-size: 13.5px;
+    list-style: none;
+  }
+  .contact li { margin: 0; }
+  .contact .k {
+    color: var(--muted);
+    margin-right: 6px;
+  }
+
+  .download {
+    margin: 14px 0 0;
+    font-size: 13.5px;
+  }
+  .download a {
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+    display: inline-block;
+  }
+  .download a:hover, .download a:focus-visible {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* ---------- Sections ---------- */
+  section { margin-top: 40px; }
+
+  h2 {
+    margin: 0 0 14px;
+    padding-top: 8px;
+    border-top: 1px solid var(--rule);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  p { margin: 0 0 10px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ---------- Entries ---------- */
+  .entry { margin-bottom: 22px; }
+  .entry:last-child { margin-bottom: 0; }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta {
+    margin: 2px 0 0;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  .date {
+    font-size: 13.5px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  ul.plain {
+    margin: 8px 0 0;
+    padding: 0 0 0 18px;
+  }
+  ul.plain li {
+    margin: 0 0 5px;
+    padding-left: 2px;
+  }
+  ul.plain li::marker { color: var(--muted); }
+
+  /* ---------- Skills ---------- */
+  dl.skills {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 10px 24px;
+  }
+  dl.skills dt {
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  dl.skills dd { margin: 0; }
+
+  /* ---------- Publications ---------- */
+  ol.refs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  ol.refs li {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 0 8px;
+    margin-bottom: 12px;
+  }
+  ol.refs li:last-child { margin-bottom: 0; }
+  ol.refs .tag { color: var(--muted); font-size: 13.5px; }
+
+  .sub {
+    margin: 22px 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .sub:first-of-type { margin-top: 0; }
+
+  .note { color: var(--muted); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 56px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 600px) {
+    body { font-size: 15px; }
+    main { padding: 40px 18px 64px; }
+    h1 { font-size: 26px; }
+    section { margin-top: 32px; }
+    .date { white-space: normal; }
+    dl.skills { grid-template-columns: 1fr; gap: 2px 0; }
+    dl.skills dd { margin-bottom: 12px; }
+    ol.refs li { grid-template-columns: 34px 1fr; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    @page { margin: 16mm 14mm; }
+    html { background: #fff; }
+    body { background: #fff; font-size: 10pt; line-height: 1.45; }
+    main { max-width: none; padding: 0; }
+    a { color: var(--ink); }
+    .download { display: none; }
+    section { margin-top: 22px; break-inside: auto; }
+    .entry, ol.refs li { break-inside: avoid; }
+    h2 { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header>
+    <h1>Seoyoon Jang</h1>
+    <p class="title">Ph.D. Candidate, Electrical Engineering &middot; Integrated Circuits &amp; Hardware Design</p>
+    <ul class="contact">
+      <li><span class="k">Location</span>Cambridge, MA</li>
+      <li><span class="k">Email</span><a href="mailto:syjang97@mit.edu">syjang97@mit.edu</a></li>
+      <!-- TODO: replace with your real LinkedIn and GitHub URLs -->
+      <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/your-handle">linkedin.com/in/your-handle</a></li>
+      <li><span class="k">GitHub</span><a href="https://github.com/your-handle">github.com/your-handle</a></li>
+    </ul>
+    <p class="download"><a href="Seoyoon_Jang_CV.pdf" download>Download CV (PDF)</a></p>
+  </header>
+
+  <section id="summary">
+    <h2>Summary</h2>
+    <p>Ph.D. candidate at MIT designing energy-efficient cryptographic silicon. Two 28&nbsp;nm ASICs architected and taped out: a post-quantum authentication engine with on-chip TRNG and side-channel/fault countermeasures (measured in silicon; CICC&nbsp;2026), and a reconfigurable TFHE-CNN processor for encrypted inference (ISSCC&nbsp;2027, under review). Prior work spans HBM crosstalk-avoidance coding, ADC-based SerDes receivers, and FHE accelerators. Experienced across the full flow from RTL and physical implementation to PCB-level chip bring-up and silicon evaluation.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Core Technical Skills</h2>
+    <dl class="skills">
+      <dt>IC Design</dt>
+      <dd>28&nbsp;nm digital ASIC design and tape-out; lattice-arithmetic datapaths (NTT, Keccak); on-chip TRNG; side-channel and fault-injection countermeasures; energy-efficient PQC / FHE accelerators; ADC-based SerDes RX and DFE; HBM I/O signaling</dd>
+
+      <dt>Tools / Software</dt>
+      <dd>Verilog, SystemVerilog, VCS, Xcelium, XMODEL, Design Compiler, Genus, ICC2, Innovus, PrimeTime, PrimePower, PrimeLib, Virtuoso; C, C++, CUDA, Python, Perl, Go, Tcl, MATLAB</dd>
+
+      <dt>Hardware / Lab</dt>
+      <dd>Chip bring-up and silicon characterization; Opal Kelly FPGA; custom PCB design (Altium); ChipWhisperer; live silicon demonstration</dd>
+    </dl>
+  </section>
+
+  <section id="experience">
+    <h2>Professional Experience</h2>
+
+    <div class="entry">
+      <div class="row">
+        <h3>Apple &mdash; Hardware Engineering Intern</h3>
+        <span class="date">Summer 2026</span>
+      </div>
+      <p class="meta">Waltham, MA &middot; SerDes, ADC-based receiver</p>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <h3>Massachusetts Institute of Technology &mdash; Research Assistant</h3>
+        <span class="date">Fall 2023 &ndash; Present</span>
+      </div>
+      <p class="meta">Cambridge, MA &middot; Energy-Efficient Circuits and Systems Group (Prof. Anantha P. Chandrakasan)</p>
+
+      <div class="row" style="margin-top:12px;"><strong>Post-Quantum Fuzzy Identity-Based Encryption (PQC-FIBE) Coprocessor</strong><span class="date">DARPA &middot; Spring 2026 &ndash; Present</span></div>
+      <ul class="plain">
+        <li>Architecting a shared datapath that multiplexes existing ML-KEM polynomial arithmetic (NTT, Keccak) for FIBE matrix operations, minimizing area and power overhead on ultra-constrained silicon.</li>
+        <li>Developing a lightweight edge-AI pipeline (multi-modal Siamese networks) that extracts stable bio-fingerprints from physiological signals as identity keys.</li>
+      </ul>
+
+      <div class="row" style="margin-top:14px;"><strong>Reconfigurable TFHE-CNN Processor, 28&nbsp;nm ASIC</strong><span class="date">ARPA-H &middot; Fall 2025 &ndash; Present</span></div>
+      <ul class="plain">
+        <li>Developed a reconfigurable TFHE datapath at 0.16&ndash;0.33&nbsp;mJ/PBS performing encrypted biometric matching and inference directly on ciphertext.</li>
+        <li>Characterized the encrypted-inference datapath under fault injection. Taped out May 2026; first-author submission to ISSCC&nbsp;2027.</li>
+      </ul>
+
+      <div class="row" style="margin-top:14px;"><strong>Post-Quantum Authentication Engine, 28&nbsp;nm ASIC</strong><span class="date">ARPA-H &middot; Fall 2023 &ndash; Spring 2025</span></div>
+      <ul class="plain">
+        <li>Designed a cryptoengine achieving 9.8&ndash;36.6&times; PQC energy gains at 0.22&nbsp;mm&sup2; and 0.86&nbsp;&micro;J/Op, with an 8.5&nbsp;fJ/bit on-chip TRNG and built-in side-channel and fault-injection countermeasures.</li>
+        <li>Designed a lightweight post-quantum authentication protocol that cuts energy by 61&ndash;76% on an ARM Cortex-M4; validated with in vitro and in vivo ingestible capsule prototypes.</li>
+        <li>Performed chip bring-up with an Opal Kelly FPGA and custom PCB; live silicon demonstration at ISSCC&nbsp;2025 Student Research Preview.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <h3>Seoul National University &mdash; Research Assistant</h3>
+        <span class="date">Fall 2021 &ndash; Summer 2023</span>
+      </div>
+      <p class="meta">Seoul, South Korea &middot; Mobile Multimedia Systems Group (Prof. Dongsuk Jeon)</p>
+      <ul class="plain">
+        <li>Designed a 28&nbsp;nm CKKS key-switching accelerator: 39% fewer external memory accesses, 11.0&times; faster than CPU, 12.7&times; higher energy efficiency than prior work.</li>
+        <li>SK Hynix collaboration: developed the WITCH crosstalk-avoidance code for HBM, reaching 84.6% bit efficiency (+20.8% over prior work) with 17&ndash;50% eye-height improvement.</li>
+        <li>Samsung collaboration: parametric Verilog sliding-block DFE for ADC-based SerDes receivers; BER simulation and optimization in XMODEL.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="entry">
+      <div class="row">
+        <h3>Massachusetts Institute of Technology</h3>
+        <span class="date">Fall 2023 &ndash; Expected Spring 2028</span>
+      </div>
+      <p class="meta">Ph.D. candidate, Electrical Engineering and Computer Science &middot; GPA 5.0/5.0</p>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <h3>Seoul National University</h3>
+        <span class="date">Fall 2021 &ndash; Summer 2023</span>
+      </div>
+      <p class="meta">M.S., Intelligence and Information &middot; GPA 4.0/4.0</p>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <h3>Seoul National University</h3>
+        <span class="date">Spring 2017 &ndash; Spring 2021</span>
+      </div>
+      <p class="meta">B.S., Electrical and Computer Engineering, Summa Cum Laude &middot; GPA 3.92/4.0</p>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Selected Publications</h2>
+
+    <p class="sub">Conference</p>
+    <ol class="refs">
+      <li>
+        <span class="tag">[C1]</span>
+        <span><strong>S. Jang</strong>, S. Maji, R.S. Agrawal, H.S. Lee, G. Traverso, A.P. Chandrakasan, &ldquo;A 28nm 0.86&micro;J/Op Post-Quantum Secure Authentication Engine with 8.5fJ/bit TRNG and SCA/Fault Tolerance for Wireless Biomedical Devices,&rdquo; <em>IEEE CICC</em>, 2026.</span>
+      </li>
+      <li>
+        <span class="tag">[C2]</span>
+        <span><strong>S. Jang</strong>, H.S. Lee, R.S. Agrawal, S. Maji, et al., &ldquo;Post Quantum Secure Communication Protocol with Ultra Low-Power Hardware Solution for Ingestible Medical Device,&rdquo; <em>IEEE EMBC</em>, 2025.</span>
+      </li>
+      <li>
+        <span class="tag">[C3]</span>
+        <span><strong>S. Jang</strong>*, S. Jeon*, K. Shin, D. Lee, et al., &ldquo;WITCH: WeIghTed Coding Scheme for Crosstalk Reduction in High Bandwidth Memory,&rdquo; <em>ASP-DAC</em>, 2024. <span class="note">(*equal contribution)</span></span>
+      </li>
+      <li>
+        <span class="tag">[C4]</span>
+        <span><strong>S. Jang</strong>, S. Park, D. Jeon, &ldquo;Efficient Key Switching Accelerator for Fully Homomorphic Encryption,&rdquo; <em>ASP-DAC</em>, 2024.</span>
+      </li>
+    </ol>
+
+    <p class="sub">Journal</p>
+    <ol class="refs">
+      <li>
+        <span class="tag">[J1]</span>
+        <span><strong>S. Jang</strong>*, S. Jeon*, K. Shin, D. Lee, et al., &ldquo;Weighted Coding Scheme for Noise Reduction in Silicon Interposer of HBM,&rdquo; <em>IEEE Trans. VLSI Systems</em>, 2025. <span class="note">(*equal contribution)</span></span>
+      </li>
+    </ol>
+
+    <p class="sub">Under review</p>
+    <ol class="refs">
+      <li>
+        <span class="tag">[S1]</span>
+        <span><strong>S. Jang</strong>, R.S. Agrawal, S. Maji, G. Traverso, A.P. Chandrakasan, &ldquo;A 28nm 0.16&ndash;0.33mJ/PBS Reconfigurable TFHE-CNN Processor for Encrypted Personal-Hub Inference with Fault Injection Characterization,&rdquo; <em>IEEE ISSCC</em>, 2027.</span>
+      </li>
+      <li>
+        <span class="tag">[S2]</span>
+        <span><strong>S. Jang</strong>, R.S. Agrawal, S. Maji, G. Traverso, A.P. Chandrakasan, &ldquo;A 0.86-&micro;J/Op Post-Quantum Secure Authentication Engine with TRNG and SCA/Fault Tolerance for Wireless Biomedical Devices,&rdquo; <em>IEEE J. Solid-State Circuits</em>.</span>
+      </li>
+    </ol>
+  </section>
+
+  <section id="honors">
+    <h2>Honors &amp; Recognition</h2>
+    <ul class="plain" style="margin-top:0;">
+      <li>MIT EECS nominee, NAE Grand Challenge Vest Fellowship (Security), 2026.</li>
+      <li>MIT Presidential Graduate Fellowship, 2023&ndash;2024.</li>
+      <li>Oral presentations at CICC 2026 and EMBC 2025; live silicon demo at ISSCC 2025 Student Research Preview.</li>
+      <li>Press: <em>MIT News</em> (April 2026) and <em>CNN</em> (May 2026) on the post-quantum authentication chip.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Seoyoon Jang &middot; Last updated October 2026</span>
+  </footer>
+
+</main>
+</body>
+</html>
